@@ -37,8 +37,15 @@ module.exports = function(config){
 
         frameworks: ['jasmine'],
 
-        browsers : ['Chrome'],
+        browsers : ['PhantomJS', 'Firefox', 'Chrome'],
 
+       customLaunchers: {
+          Chrome_travis_ci: {
+            base: 'Chrome',
+            flags: ['--no-sandbox']
+          }
+        },
+        
         plugins : [
             'karma-chrome-launcher',
             'karma-firefox-launcher',
