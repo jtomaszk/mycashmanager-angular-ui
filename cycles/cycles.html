@@ -1,0 +1,105 @@
+<div ng-controller="CyclesCtrl"">
+<div class="page-header">
+    <button type="button" class="btn btn-primary pull-right"
+            ng-click="open()">
+        Add new cycle
+    </button>
+
+    <form class="form-inline pull-right">
+        <div class="form-group">
+            <label>Search</label>
+            <input type="text" ng-model="search" class="form-control" placeholder="Search">
+        </div>
+        &nbsp;
+    </form>
+
+    <h1>
+        Cycle transactions
+        <small></small>
+    </h1>
+</div>
+<div class="row">
+    <div class="col-md-12">
+
+        <table class="table" ng-init="getCycles()">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th ng-click="sort('account_name')">
+                    Account
+                    <span class="glyphicon sort-icon" ng-show="sortKey=='account_name'"
+                          ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                </th>
+                <th ng-click="sort('amount')">
+                    Amount
+                    <span class="glyphicon sort-icon" ng-show="sortKey=='amount'"
+                          ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                </th>
+                <th ng-click="sort('transaction_type')">
+                    Type
+                    <span class="glyphicon sort-icon" ng-show="sortKey=='transaction_type'"
+                          ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                </th>
+                <th ng-click="sort('category_name')">
+                    Category
+                    <span class="glyphicon sort-icon" ng-show="sortKey=='category_name'"
+                          ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                </th>
+                <th ng-click="sort('name')">
+                    Name
+                    <span class="glyphicon sort-icon" ng-show="sortKey=='name'"
+                          ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                </th>
+                <th ng-click="sort('date_start')">
+                    Date start
+                    <span class="glyphicon sort-icon" ng-show="sortKey=='date_start'"
+                          ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                </th>
+                <th>
+                    Details
+                </th>
+                <th ng-click="sort('date_next')">
+                    Date next
+                    <span class="glyphicon sort-icon" ng-show="sortKey=='date_next'"
+                          ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                </th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="i in cycles|orderBy:sortKey:reverse|filter:search">
+                <td>{{ }}</td>
+                <td>{{ i.account_name }}</td>
+                <td>{{ i.amount | currency: i.account_currency_name }}</td>
+                <td>{{ i.transaction_type }}</td>
+                <td>{{ i.category_name }}</td>
+                <td>{{ i.name }}</td>
+                <td>{{ i.date_start | date : 'mediumDate'}}</td>
+                <td>
+                    {{ i.repeat_every ? 'repeat every ' + i.repeat_every + ' ' + i.repeat_type : ""}}
+                    {{ i.max_count ? i.max_count + ' times' : '' }}
+                    {{ i.date_end ? 'until ' + (i.date_end | date : 'mediumDate') : '' }}
+                </td>
+                <td>{{ i.date_next | date : 'mediumDate'}}</td>
+                <td>
+                    <div class="buttons">
+                        <button type="button" class="btn btn-xs btn-primary"
+                                ng-click="openAddTransactionContent(i)">
+                            Save transaction
+                        </button>
+                        <button type="button" class="btn btn-xs btn-default"
+                                ng-click="openEditCycle(i)">
+                            Edit
+                        </button>
+                        <button type="button" class="btn btn-xs btn-danger"
+                                ng-click="deleteCycle(i.id)">
+                            Delete
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</div>

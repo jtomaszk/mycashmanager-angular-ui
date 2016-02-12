@@ -1,0 +1,41 @@
+{
+  "name": "mycashmanager-angular-ui",
+  "authors": [
+    "Jarema Tomaszkiewicz <jarema.tomaszkiewicz@gmail.com>"
+  ],
+  "description": "A UI part of mycashmanager",
+  "main": "app.js",
+  "moduleType": [
+    "node"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "private": false,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.5.0",
+    "angular-route": "~1.5.0",
+    "angular-loader": "~1.5.0",
+    "angular-mocks": "~1.5.0",
+    "angular-bootstrap": "~1.1.2",
+    "angular-xeditable": "~0.1.8",
+    "angular-messages": "~15.0",
+    "angular-utils-pagination": "~0.10.0",
+    "html5-boilerplate": "~5.2.0",
+    "bootstrap": "~3.3.6",
+    "bootstrap-select": "~1.7.5",
+    "Flot": "jquery-flot#~0.8.3",
+    "angular-translate": "~2.8.1",
+    "angular-translate-loader-static-files": "~2.8.1",
+    "angular-translate-storage-local": "~2.8.1",
+    "angular-cookie": "~4.0.9",
+    "angular-animate": "~1.4.8",
+    "jasmine-core": "jasmine#~2.4.1"
+  }
+}

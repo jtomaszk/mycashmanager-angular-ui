@@ -1,0 +1,152 @@
+<form name="addCycleContentForm" class="form-horizontal" ng-submit="submit(addCycleContentForm)" novalidate>
+    <div class="modal-header">
+        <h3 class="modal-title">
+            {{ selected.id ? 'Edit cycle' : 'Add cycle' }}
+        </h3>
+    </div>
+    <div class="modal-body">
+        <div class="form-group" ng-init="getAccounts()">
+            <label for="currencyDropdown" class="col-sm-2 control-label">Account</label>
+
+            <div class="col-sm-10">
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle"
+                            type="button" id="currencyDropdown" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="true">
+                        {{ selected.account.name }}
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="currencyDropdown">
+                        <li ng-repeat="item in accounts">
+                            <a href="#"
+                               ng-click="$event.preventDefault(); selected.account = item">
+                                {{ item.name }}
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="inputName" class="col-sm-2 control-label">Name</label>
+
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="inputName"
+                       placeholder="insert cycle name"
+                       ng-model="selected.name" ng-minlength="3" required>
+            </div>
+        </div>
+
+        <div class="form-group" ng-init="getTransactionTypes()">
+            <label for="valueName" class="col-sm-2 control-label">Value</label>
+
+            <div class="col-sm-10">
+                <div class="input-group">
+                    <input type="number" class="form-control" id="valueName" placeholder="insert value" step="0.01" min="0"
+                           ng-model="selected.amount" required>
+
+                    <div class="input-group-btn">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="typeDropdown"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                            {{ selected.type.name }}
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="typeDropdown">
+                            <li ng-repeat="item in transactionTypes">
+                                <a href="#"
+                                   ng-click="$event.preventDefault(); selected.type = item">{{ item.name }}</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group" ng-init="getTransactionCategories()">
+            <label for="categoryDropdown" class="col-sm-2 control-label">Category</label>
+
+            <div class="col-sm-10">
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="categoryDropdown"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                        {{ selected.category.name }}
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="categoryDropdown">
+                        <li ng-repeat="item in transactionCategories">
+                            <a href="#" ng-click="$event.preventDefault(); selected.category = item">
+                                {{ item.name }}
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="dateStart" class="col-sm-2 control-label">Starts on</label>
+
+            <div class="col-sm-10">
+                <input type="date" class="form-control" id="dateStart"
+                       ng-model="selected.date_start" required>
+            </div>
+        </div>
+
+        <div class="form-group" ng-init="getRepeatTypes()">
+            <label for="repeatValue" class="col-sm-2 control-label">Repeat</label>
+            <div class="col-sm-10">
+
+                <div class="input-group">
+                    <span class="input-group-addon" id="repeatValue-addon">every</span>
+
+                    <input type="number" class="form-control" id="repeatValue"
+                           aria-describedby="repeatValue-addon"
+                           placeholder="input interval" step="1" min="1"
+                           ng-model="selected.repeat_every" required>
+
+                    <div class="input-group-btn">
+                        <button type="button" class="btn btn-secondary dropdown-toggle"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            {{ selected.repeatType.name }}
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-right">
+                            <li ng-repeat="item in repeatTypes">
+                                <a href="#" class="dropdown-item"
+                                   ng-click="$event.preventDefault(); selected.repeatType = item">
+                                    {{ item.name }}
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="dateEnd" class="col-sm-2 control-label">Ends</label>
+
+            <div class="col-sm-10">
+                <div class="input-group">
+                    <span class="input-group-addon" id="dateEnd-addon">on</span>
+                    <input type="date" class="form-control" id="dateEnd" aria-describedby="dateEnd-addon"
+                           ng-model="selected.date_end" ng-disabled="selected.max_count">
+                </div>
+
+                <div class="input-group" style="padding-top: 10px;">
+                    <span class="input-group-addon" id="count-addon">After</span>
+                    <input type="number" class="form-control" id="count" aria-describedby="count-addon count-addon2"
+                           ng-model="selected.max_count" ng-disabled="selected.date_end">
+                    <span class="input-group-addon" id="count-addon2">occurrences</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" type="submit" ng-disabled="addCycleContentForm.$invalid">OK</button>
+        <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+    </div>
+</form>

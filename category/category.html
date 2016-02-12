@@ -1,0 +1,54 @@
+<div ng-controller="CategoryCtrl" ng-init="initCategoryList()">
+    <div class="page-header">
+        <button type="button" class="btn btn-primary pull-right" ng-click="add()">Add new category</button>
+        <h1>Categories
+            <small></small>
+        </h1>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <table class="table table-condensed table-hover">
+                <thead>
+                <th>#</th>
+                <th ng-click="sort('name')">
+                    Name
+                    <span class="glyphicon sort-icon" ng-show="sortKey=='name'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                </th>
+                <th></th>
+                </thead>
+                <tbody>
+                <tr ng-repeat="i in list|orderBy:sortKey:reverse">
+                    <td></td>
+                    <td>
+                        <span e-form="rowform" e-class="input-sm" e-name="name"
+                              editable-text="i.name" e-required>
+                            {{ i.name }}
+                        </span>
+                    </td>
+                    <td>
+                        <!-- form -->
+                        <form editable-form name="rowform" onbeforesave="saveShelf($data, i.id)"
+                              ng-show="rowform.$visible"
+                              class="form-buttons form-inline">
+                            <button type="submit" ng-disabled="rowform.$waiting" class="btn btn-xs btn-primary">
+                                Save
+                            </button>
+                            <button type="button" ng-disabled="rowform.$waiting" ng-click="rowform.$cancel()"
+                                    class="btn btn-xs btn-default">
+                                Cancel
+                            </button>
+                        </form>
+                        <div class="buttons" ng-show="!rowform.$visible">
+                            <button type="button" class="btn btn-xs btn-primary" ng-click="rowform.$show()">Edit
+                            </button>
+                            <button type="button" class="btn btn-xs btn-danger" ng-click="deleteCategory(i.id)">
+                                Delete
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
