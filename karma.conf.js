@@ -33,7 +33,10 @@ module.exports = function(config){
             'cycles/add_cycle_transaction_ctrl.js',
         ],
 
-        autoWatch : true,
+        autoWatch : false,
+        singleRun: true,
+        colors: true,
+        logLevel: config.LOG_INFO,
 
         frameworks: ['jasmine'],
 
