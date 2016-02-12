@@ -50,7 +50,7 @@ module.exports = function(config){
             'karma-junit-reporter'
         ],
 
-        preprocessors: { '*.js': ['coverage'] },
+        preprocessor: { '*.js': ['coverage'] },
         
         // test results reporter to use
         // possible values: 'dots', 'progress'
