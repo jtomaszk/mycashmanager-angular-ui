@@ -27,14 +27,8 @@
     "angular-xeditable": "~0.1.8",
     "angular-messages": "~1.5.0",
     "angular-utils-pagination": "~0.10.0",
-    "html5-boilerplate": "~5.2.0",
     "bootstrap": "~3.3.6",
     "bootstrap-select": "~1.7.5",
-    "angular-translate": "~2.8.1",
-    "angular-translate-loader-static-files": "~2.8.1",
-    "angular-translate-storage-local": "~2.8.1",
-    "angular-cookie": "~4.0.9",
-    "angular-animate": "~1.4.8",
     "jasmine-core": "~2.4.1"
   }
 }
