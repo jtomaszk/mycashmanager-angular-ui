@@ -50,8 +50,16 @@ module.exports = function(config){
             'karma-junit-reporter'
         ],
 
-        reporters: ['progress', 'coverage'],
         preprocessors: { '*.js': ['coverage'] },
+        
+        // test results reporter to use
+        // possible values: 'dots', 'progress'
+        // available reporters: https://npmjs.org/browse/keyword/karma-reporter
+        reporters: ['progress', 'coverage'],
+    
+        coverageReporter: {
+          reporters: [{type: 'lcov'}]
+        },
         
         junitReporter : {
             outputFile: 'test_out/unit.xml',
