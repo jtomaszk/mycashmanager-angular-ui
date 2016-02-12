@@ -58,8 +58,14 @@ module.exports = function(config){
         // available reporters: https://npmjs.org/browse/keyword/karma-reporter
         reporters: ['progress', 'coverage'],
     
+        // Configure code coverage reporter
         coverageReporter: {
-          reporters: [{type: 'lcov'}]
+            reporters: [
+                // generates ./coverage/lcov.info
+                {type:'lcovonly', subdir: '.'},
+                // generates ./coverage/coverage-final.json
+                {type:'json', subdir: '.'},
+            ]
         },
         
         junitReporter : {
