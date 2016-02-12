@@ -17,4 +17,3 @@ install:
 
 after_success:
 - codecov
-- npm run codecov
