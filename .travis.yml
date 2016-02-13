@@ -12,8 +12,6 @@ before_install:
   - export DISPLAY=:99.0
   - sh -e /etc/init.d/xvfb start
 
-install:
-  - npm install -g codecov
-
-after_success:
-- codecov
+addons:
+    code_climate:
+        repo_token: 2b8c683d4856d4af3b5bb2b03c96ba4923e16fead17ca720d836e999d9dc400e
