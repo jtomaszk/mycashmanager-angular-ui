@@ -11,10 +11,16 @@ angular.module('myCashManager.dash',
                                     $uibModal,
                                     $log,
                                     $location,
+                                    $auth,
                                     appService,
                                     accountService) {
 
     $scope.accounts = [];
+
+    $scope.authenticate = function(provider) {
+        $auth.authenticate(provider);
+    };
+
 
     $scope.getAccounts = function() {
         accountService.getAccounts().then(function (result) {

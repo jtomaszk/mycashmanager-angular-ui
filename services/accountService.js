@@ -7,23 +7,23 @@
 angular.module('myCashManager.accountServices', [])
 .service('accountService', function ($http, $q) {
     this.getAccounts = function () {
-        return $http({method: 'GET', url: '/accounts'});
+        return $http({method: 'GET', url: $backendRoot() + '/accounts'});
     };
 
     this.getTransactions = function(accountId) {
-        return $http({method: 'GET', url: '/transactions/' + accountId});
+        return $http({method: 'GET', url: $backendRoot() + '/transactions/' + accountId});
     };
 
     this.deleteTransaction = function(transactionId) {
-        return $http.delete('/transaction/' + transactionId);
+        return $http.delete($backendRoot() + '/transaction/' + transactionId);
     };
 
     this.postTransaction = function(data) {
-        return $http.post('/transaction', data);
+        return $http.post($backendRoot() + '/transaction', data);
     };
 
     this.putTransaction = function(selected) {
-        return $http.put('/transaction', {
+        return $http.put($backendRoot() + '/transaction', {
             accountId: selected.accountId,
             type: selected.type.enum,
             categoryId: selected.category.id,
@@ -35,11 +35,11 @@ angular.module('myCashManager.accountServices', [])
     };
 
     this.getCurrencies = function() {
-        return $http({method: 'GET', url: '/currencies'});
+        return $http({method: 'GET', url: $backendRoot() + '/currencies'});
     };
 
     this.putAccount = function(selected) {
-        return $http.put('/account', {
+        return $http.put($backendRoot() + '/account', {
             currencyId: selected.currency.id,
             accountName: selected.accountName
         });
@@ -93,47 +93,47 @@ angular.module('myCashManager.accountServices', [])
     };
 
     this.getTransactionCategories = function() {
-        return $http.get('/categories');
+        return $http.get($backendRoot() + '/categories');
     };
 
     this.putTransactionCategory = function(i) {
-        return $http.put('/category', {
+        return $http.put($backendRoot() + '/category', {
             category: i
         });
     };
 
     this.postTransactionCategory = function(i) {
-        return $http.post('/category', {
+        return $http.post($backendRoot() + '/category', {
             category: i
         });
     };
 
     this.deleteTransactionCategory = function(id) {
-        return $http.delete('/category/' + id);
+        return $http.delete($backendRoot() + '/category/' + id);
     };
 
     this.getCycles = function() {
-        return $http.get('/cycles');
+        return $http.get($backendRoot() + '/cycles');
     };
 
     this.putCycle = function(i) {
-        return $http.put('/cycle', {
+        return $http.put($backendRoot() + '/cycle', {
             item: i
         });
     };
 
     this.postCycle = function(i) {
-        return $http.post('/cycle', {
+        return $http.post($backendRoot() + '/cycle', {
             item: i
         });
     };
 
     this.deleteCycle = function(id) {
-        return $http.delete('/cycle/' + id);
+        return $http.delete($backendRoot() + '/cycle/' + id);
     };
 
     this.putCycleTransaction = function(i) {
-        return $http.put('/transaction/cycle/' + i.cycleId, {
+        return $http.put($backendRoot() + '/transaction/cycle/' + i.cycleId, {
             item: i.item
         });
     };

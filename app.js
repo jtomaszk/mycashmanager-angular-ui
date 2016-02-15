@@ -8,6 +8,7 @@ function $apiRoot() {
 var app = angular.module('myCashManager', [
     'ngRoute',
     'xeditable',
+    'satellizer',
     'myCashManager.dash',
     'myCashManager.account',
     'myCashManager.version',
@@ -57,6 +58,15 @@ var app = angular.module('myCashManager', [
 
         }
     };
+}).config(function($authProvider) {
+
+
+}).controller('LoginCtrl', function($scope, $auth) {
+
+    $scope.authenticate = function(provider) {
+        $auth.authenticate(provider);
+    };
+
 });
 
 app.run(function (editableOptions) {
