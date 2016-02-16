@@ -8,6 +8,7 @@ function $apiRoot() {
 var app = angular.module('myCashManager', [
     'ngRoute',
     'xeditable',
+    'toastr',
     'satellizer',
     'myCashManager.dash',
     'myCashManager.account',
@@ -59,7 +60,6 @@ var app = angular.module('myCashManager', [
         }
     };
 }).config(function($authProvider) {
-
 
 }).controller('LoginCtrl', function($scope, $auth) {
 
