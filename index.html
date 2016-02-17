@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>{% block title %}MyCashmanager{% endblock %} | Simple accounting</title>
+    <title>MyCashmanager | Simple accounting</title>
     <link rel=stylesheet type=text/css href="bower_components/html5-boilerplate/dist/css/normalize.css">
     <link rel=stylesheet type=text/css href="bower_components/html5-boilerplate/dist/css/main.css">
     <link rel=stylesheet type=text/css href="bower_components/bootstrap/dist/css/bootstrap.min.css">
@@ -71,6 +71,7 @@
 <script src="bower_components/angular-toastr/dist/angular-toastr.tpls.js"></script>
 <script src="bower_components/satellizer/satellizer.min.js"></script>
 
+<script src="properties.js"></script>
 <script src="app.js"></script>
 <script src="dash/dash.js"></script>
 <script src="dash/add_transaction_ctrl.js"></script>
@@ -86,15 +87,6 @@
 <script src="cycles/add_cycle_ctrl.js"></script>
 <script src="cycles/add_cycle_transaction_ctrl.js"></script>
 
-
-<script>
-    function $apiRoot() {
-        return '/';
-    }
-    function $backendRoot() {
-        return 'http://127.0.0.1:5000';
-    }
-</script>
 
 </body>
 </html>

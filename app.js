@@ -1,9 +1,5 @@
 'use strict';
 
-function $apiRoot() {
-    return ''; //$("#linkApiRoot").attr("href");
-}
-
 // Declare app level module which depends on views, and components
 var app = angular.module('myCashManager', [
     'ngRoute',
@@ -60,13 +56,33 @@ var app = angular.module('myCashManager', [
         }
     };
 }).config(function($authProvider) {
+    $authProvider.google({
+        clientId: $googleOauth2ClientId(),
+        url: $backendRoot() + '/auth/google'
+    });
+    $authProvider.baseUrl = $backendRoot() + '/';
 
-}).controller('LoginCtrl', function($scope, $auth) {
+}).controller('LoginCtrl', function($scope, $auth, toastr) {
 
     $scope.authenticate = function(provider) {
-        $auth.authenticate(provider);
+        $auth.authenticate(provider)
+            .then(function() {
+                console.log('You have successfully signed in with ' + provider + '!');
+                toastr.success('You have successfully signed in with ' + provider + '!');
+                $location.path('/');
+            })
+            .catch(function(error) {
+                if (error.error) {
+                    // Popup error - invalid redirect_uri, pressed cancel button, etc.
+                    toastr.error(error.error);
+                } else if (error.data) {
+                    // HTTP response error from server
+                    toastr.error(error.data.message, error.status);
+                } else {
+                    toastr.error(error);
+                }
+            });
     };
-
 });
 
 app.run(function (editableOptions) {
