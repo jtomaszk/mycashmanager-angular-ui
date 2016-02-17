@@ -15,7 +15,7 @@ module.exports = function(config){
             'bower_components/angular-xeditable/dist/js/xeditable.js',
             'bower_components/angular-utils-pagination/dirPagination.js',
 
-
+            'properties.test.js',
             'app.js',
             'dash/dash.js',
             'dash/add_transaction_ctrl.js',

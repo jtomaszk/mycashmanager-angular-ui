@@ -1,0 +1,92 @@
+<!doctype html>
+<html ng-app="myCashManager">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>MyCashmanager | Simple accounting</title>
+    <link rel=stylesheet type=text/css href="bower_components/html5-boilerplate/dist/css/normalize.css">
+    <link rel=stylesheet type=text/css href="bower_components/html5-boilerplate/dist/css/main.css">
+    <link rel=stylesheet type=text/css href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel=stylesheet type=text/css href="bower_components/bootstrap/dist/css/bootstrap-theme.min.css">
+    <link rel=stylesheet type=text/css href="bower_components/bootstrap-select/dist/css/bootstrap-select.min.css">
+    <link rel=stylesheet type=text/css href="bower_components/angular-bootstrap/ui-bootstrap-csp.css">
+    <link rel=stylesheet type=text/css href="bower_components/angular-xeditable/dist/css/xeditable.css">
+    <link rel=stylesheet type=text/css href="bower_components/angular-toastr/dist/angular-toastr.css">
+
+    <link rel=stylesheet type=text/css href="app.css">
+</head>
+<body role="document">
+<link id="linkApiRoot" href="/static/js/"/>
+
+<nav class="navbar navbar-fixed-top navbar-default">
+  <div class="btn-group pull-right">
+
+  </div>
+</nav>
+
+<!-- Fixed navbar -->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">MyCashmanager</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li class-on-active-link="active"><a class="btn" href="#/dash">Dashboard</a></li>
+                <li class-on-active-link="active"><a class="btn" href="#/account">Transactions</a></li>
+                <li class-on-active-link="active"><a class="btn" href="#/category">Categories</a></li>
+                <li class-on-active-link="active"><a class="btn" href="#/cycles">Cycle transactions</a></li>
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</nav>
+
+<div class="container theme-showcase" role="main">
+    <div ng-view></div>
+
+</div>
+
+<footer class="footer">
+    <div class="container">
+        <p class="text-muted">MyCashmanager app: v<span app-version></span></p>
+    </div>
+</footer>
+
+<script src="bower_components/jquery/dist/jquery.min.js"></script>
+<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angular-route/angular-route.js"></script>
+<script src="bower_components/angular-animate/angular-animate.js"></script>
+<script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+<script src="bower_components/angular-xeditable/dist/js/xeditable.js"></script>
+<script src="bower_components/angular-utils-pagination/dirPagination.js"></script>
+<script src="bower_components/angular-toastr/dist/angular-toastr.tpls.js"></script>
+<script src="bower_components/satellizer/satellizer.min.js"></script>
+
+<script src="properties.js"></script>
+<script src="app.js"></script>
+<script src="dash/dash.js"></script>
+<script src="dash/add_transaction_ctrl.js"></script>
+<script src="dash/create_account_ctrl.js"></script>
+<script src="account/account.js"></script>
+<script src="version/version.js"></script>
+<script src="version/version-directive.js"></script>
+<script src="version/interpolate-filter.js"></script>
+<script src="services/accountService.js"></script>
+<script src="services/appService.js"></script>
+<script src="category/category.js"></script>
+<script src="cycles/cycles.js"></script>
+<script src="cycles/add_cycle_ctrl.js"></script>
+<script src="cycles/add_cycle_transaction_ctrl.js"></script>
+
+
+</body>
+</html>
