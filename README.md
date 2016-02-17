@@ -6,8 +6,7 @@
 ##Configuration
 Create file ```properties.js```
 
-```
-#!javascirpt
+```javascirpt
 function $apiRoot() {
     return '/';
 }

@@ -11,3 +11,4 @@ static/gen/
 tmp
 .DS_Store
 properties.js
+coverage/
