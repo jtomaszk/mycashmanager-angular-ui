@@ -1,8 +1,6 @@
 <div ng-controller="DashCtrl" ng-init="getAccounts()">
     <div class="page-header">
-        <h1>Accounts <small></small>
-        <button type="button" class="btn btn-primary pull-right" ng-click="open()">Create account</button>
-        </h1>
+        <h1>Accounts <small></small></h1>
     </div>
     <div class="row">
         <div class="col-md-6">
@@ -12,7 +10,11 @@
                     <th>#</th>
                     <th>Name</th>
                     <th>Balance</th>
-                    <th></th>
+                    <th>
+                        <button type="button" class="btn btn-default btn-sm pull-right" ng-click="open()">
+                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Account
+                        </button>
+                    </th>
                 </tr>
                 </thead>
                 <tbody>
@@ -21,8 +23,12 @@
                     <td>{{ i.name }}</td>
                     <td>{{ i.balance | currency: i.currency_name }}</td>
                     <td>
-                        <button type="button" class="btn btn-xs btn-primary" ng-click="openTransactionContent(i.id)">Add transaction</button>
-                        <button type="button" class="btn btn-xs btn-info" ng-click="viewAccount(i.id)">View</button>
+                        <div class="pull-right">
+                            <button type="button" class="btn btn-xs btn-primary" ng-click="openTransactionContent(i.id)">
+                                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Transaction
+                            </button>
+                            <button type="button" class="btn btn-xs btn-info" ng-click="viewAccount(i.id)">List</button>
+                        </div>
                     </td>
                 </tr>
                 </tbody>
