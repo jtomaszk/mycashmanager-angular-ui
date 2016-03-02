@@ -12,9 +12,12 @@ var app = angular.module('myCashManager', [
     'myCashManager.commonServices',
     'myCashManager.accountServices',
     'myCashManager.category',
-    'myCashManager.cycles'
+    'myCashManager.cycles',
+    'myCashManager.auth'
 ]).config(['$routeProvider', function ($routeProvider) {
-    $routeProvider.otherwise({redirectTo: '/dash'});
+    $routeProvider
+        .otherwise({redirectTo: '/dash'});
+
 }]).directive('classOnActiveLink', [function () {
     return {
         link: function (scope, element, attrs) {
@@ -55,36 +58,19 @@ var app = angular.module('myCashManager', [
 
         }
     };
-}).config(function($authProvider) {
-    $authProvider.google({
-        clientId: $googleOauth2ClientId(),
-        url: $backendRoot() + '/auth/google'
-    });
-    $authProvider.baseUrl = $backendRoot() + '/';
-
-}).controller('LoginCtrl', function($scope, $auth, toastr) {
-
-    $scope.authenticate = function(provider) {
-        $auth.authenticate(provider)
-            .then(function() {
-                console.log('You have successfully signed in with ' + provider + '!');
-                toastr.success('You have successfully signed in with ' + provider + '!');
-                $location.path('/');
-            })
-            .catch(function(error) {
-                if (error.error) {
-                    // Popup error - invalid redirect_uri, pressed cancel button, etc.
-                    toastr.error(error.error);
-                } else if (error.data) {
-                    // HTTP response error from server
-                    toastr.error(error.data.message, error.status);
-                } else {
-                    toastr.error(error);
-                }
-            });
-    };
 });
 
-app.run(function (editableOptions) {
+app.run(function ($rootScope, editableOptions, $auth, $location) {
     editableOptions.theme = 'bs3';
+
+    $rootScope.isAuthenticated = function() {
+        return $auth.isAuthenticated();
+    };
+
+    $rootScope.$on('$routeChangeStart', function (ev, next, curr) {
+        if (next.$$route) {
+            var auth = next.$$route.auth;
+            if (auth && !$rootScope.isAuthenticated()) { $location.path('/signin') }
+        }
+    });
 });

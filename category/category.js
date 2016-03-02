@@ -5,7 +5,8 @@ angular.module('myCashManager.category', ['ngRoute'])
 .config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/category', {
     templateUrl: $apiRoot() + 'category/category.html',
-    controller: 'CategoryCtrl'
+    controller: 'CategoryCtrl',
+    auth: true
   });
 }]).controller('CategoryCtrl', function($scope, $q, accountService) {
     $scope.list = [];

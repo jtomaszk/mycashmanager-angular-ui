@@ -5,7 +5,8 @@ angular.module('myCashManager.account', ['ngRoute', 'angularUtils.directives.dir
 .config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/account/:id', {
     templateUrl: $apiRoot() + 'account/account.html',
-    controller: 'AccountCtrl'
+    controller: 'AccountCtrl',
+    auth: true
   });
 }]).controller('AccountCtrl', function($scope, $routeParams, accountService, $uibModal, appService) {
     $scope.transactions = [];

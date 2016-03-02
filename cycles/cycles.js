@@ -5,7 +5,8 @@ angular
     .config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/cycles', {
             templateUrl: $apiRoot() + 'cycles/cycles.html',
-            controller: 'CyclesCtrl'
+            controller: 'CyclesCtrl',
+            auth: true
         });
     }]).controller('CyclesCtrl', function ($scope, $uibModal, $log, appService, accountService) {
 

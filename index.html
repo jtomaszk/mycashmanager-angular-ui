@@ -38,7 +38,7 @@
             </button>
             <a class="navbar-brand" href="#">MyCashmanager</a>
         </div>
-        <div id="navbar" class="navbar-collapse collapse">
+        <div id="navbar" class="navbar-collapse collapse" ng-if="isAuthenticated()">
             <ul class="nav navbar-nav">
                 <li class-on-active-link="active"><a class="btn" href="#/dash">Dashboard</a></li>
                 <li class-on-active-link="active"><a class="btn" href="#/account">Transactions</a></li>
@@ -86,6 +86,7 @@
 <script src="cycles/cycles.js"></script>
 <script src="cycles/add_cycle_ctrl.js"></script>
 <script src="cycles/add_cycle_transaction_ctrl.js"></script>
+<script src="auth/auth_ctrl.js"></script>
 
 
 </body>

@@ -5,8 +5,9 @@ angular.module('myCashManager.dash',
 ).config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/dash', {
     templateUrl: $apiRoot() + 'dash/dash.html',
-    controller: 'DashCtrl'
-  });
+    controller: 'DashCtrl',
+    auth: true
+  }).otherwise({redirectTo: '/signin'});
 }]).controller('DashCtrl', function($scope,
                                     $uibModal,
                                     $log,

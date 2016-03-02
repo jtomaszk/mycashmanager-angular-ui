@@ -33,6 +33,6 @@
     "bootstrap-select": "~1.7.5",
     "jasmine-core": "~2.4.1",
     "html5-boilerplate": "~5.3.0",
-    "satellizer": "*"
+    "satellizer": "^0.14.0"
   }
 }
