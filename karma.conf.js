@@ -1,9 +1,9 @@
-module.exports = function(config){
+module.exports = function (config) {
     config.set({
 
-        basePath : './',
+        basePath: './',
 
-        files : [
+        files: [
             'bower_components/angular/angular.js',
             'bower_components/angular-mocks/angular-mocks.js',
 
@@ -31,18 +31,20 @@ module.exports = function(config){
             'cycles/cycles.js',
             'cycles/add_cycle_ctrl.js',
             'cycles/add_cycle_transaction_ctrl.js',
+            'auth/auth_ctrl.js',
+            'auth/auth_ctrl_test.js'
         ],
 
-        autoWatch : false,
+        autoWatch: false,
         singleRun: true,
         colors: true,
         logLevel: config.LOG_INFO,
 
         frameworks: ['jasmine'],
 
-        browsers : ['PhantomJS', 'Firefox'],
-        
-        plugins : [
+        browsers: ['PhantomJS', 'Firefox'],
+
+        plugins: [
             'karma-chrome-launcher',
             'karma-firefox-launcher',
             'karma-phantomjs-launcher',
@@ -51,24 +53,24 @@ module.exports = function(config){
             'karma-junit-reporter'
         ],
 
-        preprocessor: { '*.js': ['coverage'] },
-        
+        preprocessor: {'*.js': ['coverage']},
+
         // test results reporter to use
         // possible values: 'dots', 'progress'
         // available reporters: https://npmjs.org/browse/keyword/karma-reporter
         reporters: ['progress', 'coverage'],
-    
+
         // Configure code coverage reporter
         coverageReporter: {
             reporters: [
                 // generates ./coverage/lcov.info
-                {type:'lcovonly', subdir: '.'},
+                {type: 'lcovonly', subdir: '.'},
                 // generates ./coverage/coverage-final.json
-                {type:'json', subdir: '.'},
+                {type: 'json', subdir: '.'},
             ]
         },
-        
-        junitReporter : {
+
+        junitReporter: {
             outputFile: 'test_out/unit.xml',
             suite: 'unit'
         }
